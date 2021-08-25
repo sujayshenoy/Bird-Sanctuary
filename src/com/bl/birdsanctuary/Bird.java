@@ -34,8 +34,6 @@ abstract public class Bird {
 		return Objects.equals(id, other.id);
 	}
 	
-	abstract public void fly();
-	abstract public void swim();
 	abstract public void eat();
 	
 }

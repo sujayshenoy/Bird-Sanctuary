@@ -8,35 +8,47 @@ public class ViewLayer {
 		
 		BirdSanctuaryRepository birdRepo = BirdSanctuaryRepository.getInstance();
 		Set<Bird> birdList = birdRepo.getAllBirds();
+		
 		for(Bird item: birdList) {
 			System.out.println(item);
 		}
+		
 	}
 	
 	public void printFlyable() {
 
 		BirdSanctuaryRepository birdRepo = BirdSanctuaryRepository.getInstance();
 		Set<Bird> birdList = birdRepo.getAllBirds();
+		
 		for (Bird item : birdList) {
-			item.fly();
+			if(item instanceof Flyable) {
+				((Flyable)item).fly();
+			}
 		}
+		
 	}
 
 	public void printSwimmable() {
 
 		BirdSanctuaryRepository birdRepo = BirdSanctuaryRepository.getInstance();
 		Set<Bird> birdList = birdRepo.getAllBirds();
+		
 		for (Bird item : birdList) {
-			item.swim();
+			if(item instanceof Swimmable) {
+				((Swimmable)item).swim();
+			}
 		}
+		
 	}
 
 	public void printEatable() {
 
 		BirdSanctuaryRepository birdRepo = BirdSanctuaryRepository.getInstance();
 		Set<Bird> birdList = birdRepo.getAllBirds();
+		
 		for (Bird item : birdList) {
 			item.eat();
 		}
+		
 	}
 }

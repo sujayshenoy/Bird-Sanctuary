@@ -1,6 +1,6 @@
 package com.bl.birdsanctuary;
 
-public class Parrot extends Bird {
+public class Parrot extends Bird implements Flyable {
 	Parrot(){
 		color = Color.BLUE;
 		name = "parrot";
@@ -9,20 +9,14 @@ public class Parrot extends Bird {
 	@Override
 	public void fly() {
 		
-		System.out.println(name + "can fly");
+		System.out.println(name + " can fly");
 		
-	}
-
-	@Override
-	public void swim() {
-		
-	
 	}
 
 	@Override
 	public void eat() {
 		
-		System.out.println(name + "can eat");
+		System.out.println(name + " can eat");
 		
 	}
 }
