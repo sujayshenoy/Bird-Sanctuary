@@ -21,8 +21,8 @@ public class ViewLayer {
 		Set<Bird> birdList = birdRepo.getAllBirds();
 		
 		for (Bird item : birdList) {
-			if(item instanceof Flyable) {
-				((Flyable)item).fly();
+			if(item.canFly) {
+				item.fly();
 			}
 		}
 		
@@ -34,8 +34,8 @@ public class ViewLayer {
 		Set<Bird> birdList = birdRepo.getAllBirds();
 		
 		for (Bird item : birdList) {
-			if(item instanceof Swimmable) {
-				((Swimmable)item).swim();
+			if(item.canSwim) {
+				item.swim();
 			}
 		}
 		

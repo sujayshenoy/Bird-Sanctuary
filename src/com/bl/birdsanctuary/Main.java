@@ -57,25 +57,56 @@ public class Main {
 			
 			switch (option) {
 			case 1:
-				Parrot parrot = new Parrot();
-				Penguin penguin1 = new Penguin();
-				Ostrich ostrich = new Ostrich();
-				Duck duck = new Duck();
-				Penguin penguin2 = new Penguin();
+				addTemporaryBirds();
 				
-				parrot.id = "pa001";
-				penguin1.id = "pe001";
-				ostrich.id = "os001";
-				duck.id = "du001";
-				penguin2.id = "pe001";
+				Bird bird = new Bird();
 				
+				in.nextLine();
+				System.out.println("Enter the id");
+				bird.id = in.nextLine();
 				
-				birdRepo.add(parrot);
-				birdRepo.add(penguin1);
-				birdRepo.add(penguin1);
-				birdRepo.add(ostrich);
-				birdRepo.add(duck);
-				birdRepo.add(penguin2);
+				System.out.println("Enter the name");
+				bird.name = in.nextLine();
+				
+				System.out.println("Choose the color");
+				int count = 1;
+				for(Bird.Color color: EnumSet.allOf(Bird.Color.class)) {
+					System.out.println(""+count+". "+color);
+					count++;
+				}
+				
+				int colorChoice = in.nextInt();
+				
+				int count1 = 1;
+				for(Bird.Color color: EnumSet.allOf(Bird.Color.class)) {
+					if( colorChoice == count1 ) {
+						bird.color = color;
+						break;
+					}
+					count1++;
+				}
+				
+				birdRepo.add(bird);
+				
+//				Parrot parrot = new Parrot();
+//				Penguin penguin1 = new Penguin();
+//				Ostrich ostrich = new Ostrich();
+//				Duck duck = new Duck();
+//				Penguin penguin2 = new Penguin();
+//				
+//				parrot.id = "pa001";
+//				penguin1.id = "pe001";
+//				ostrich.id = "os001";
+//				duck.id = "du001";
+//				penguin2.id = "pe001";
+//				
+//				
+//				birdRepo.add(parrot);
+//				birdRepo.add(penguin1);
+//				birdRepo.add(penguin1);
+//				birdRepo.add(ostrich);
+//				birdRepo.add(duck);
+//				birdRepo.add(penguin2);
 				break;
 			case 2:
 				System.out.println("Enter the bird name to remove");
@@ -84,6 +115,10 @@ public class Main {
 				String birdname = in.nextLine();
 				
 				Bird removalBird = birdRepo.getBird(birdname);
+				if( removalBird == null ) {
+					System.out.println("Bird not found");
+					break;
+				}
 				birdRepo.remove(removalBird);
 				
 				break;
@@ -106,6 +141,18 @@ public class Main {
 			
 		}
 		
+	}
+    
+    void addTemporaryBirds() {
+		Bird duck = new Bird();
+		
+		duck.name = "Duck";
+		duck.id = "d001";
+		duck.color = Bird.Color.WHITE;
+		duck.canFly = true;
+		duck.canSwim = true;
+		
+		birdRepo.add(duck);
 	}
 
 	private void editBird() {
